@@ -5,7 +5,7 @@ public class TennisApp {
   private volatile Game game;
 
   public TennisApp() {
-    this.game = new Game();
+    this.game = Game.startedGame();
   }
 
   public static void main(String[] args) {
@@ -20,4 +20,9 @@ public class TennisApp {
     return game.result().toString();
   }
 
+  public TennisApp servingPlayerScores() {
+    this.game = game.servingPlayerScores();
+
+    return this;
+  }
 }

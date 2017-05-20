@@ -10,4 +10,9 @@ class TennisAppTest extends Specification {
     expect:
     startGame().result() == "love"
   }
+
+  def "a player should have 15 points after first win"() {
+    expect:
+    startGame().servingPlayerScores().result() == "15-love"
+  }
 }

@@ -12,15 +12,14 @@ class TennisAppTest extends Specification {
     startGame().result() == "love"
   }
 
-  def "a player should have 15 points after first win"() {
+  def "a serving player should have 15 points after first win"() {
     expect:
     resultAfter("S") == "15-love"
-    resultAfter("R") == "love-15"
   }
 
-  def "a player should have 30 points after second win"() {
+  def "a receiving player should have 15 points"() {
     expect:
-    resultAfter("SS") == "30-love"
+    resultAfter("R") == "love-15"
   }
 
   def "should have appropriate number of points after scoring"() {
@@ -29,10 +28,20 @@ class TennisAppTest extends Specification {
 
     where:
     sequence | expectedResult
+    ""       | "love"
+    "S"      | "15-love"
+    "SS"     | "30-love"
     "SSS"    | "40-love"
+    "SSSR"   | "40-15"
+    "SSSRR"  | "40-30"
+    "SSSRR"  | "40-30"
     "SSR"    | "30-15"
-    "SSRS"   | "40-15"
-    "SR"     | "15-15"
-    "RS"     | "15-15"
+    "SSRR"   | "30-30"
+    "SSRRR"  | "30-40"
+    "R"      | "love-15"
+    "RR"     | "love-30"
+    "RRR"    | "love-40"
+    "RRRS"   | "15-40"
+    "RRRSS"  | "30-40"
   }
 }

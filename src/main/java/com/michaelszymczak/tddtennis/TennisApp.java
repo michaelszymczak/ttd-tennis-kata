@@ -2,6 +2,12 @@ package com.michaelszymczak.tddtennis;
 
 public class TennisApp {
 
+  private volatile Game game;
+
+  public TennisApp() {
+    this.game = new Game();
+  }
+
   public static void main(String[] args) {
     System.out.println("Hello TDD Tennis.");
   }
@@ -11,7 +17,7 @@ public class TennisApp {
   }
 
   public String result() {
-    return "love";
+    return game.result().toString();
   }
 
 }

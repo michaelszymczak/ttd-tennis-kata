@@ -25,4 +25,10 @@ public class TennisApp {
 
     return this;
   }
+
+  public TennisApp receivingPlayerScores() {
+    this.game = game.receivingPlayerScores();
+
+    return this;
+  }
 }

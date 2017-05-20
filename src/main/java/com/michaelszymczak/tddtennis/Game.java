@@ -19,4 +19,8 @@ public class Game {
   public Game servingPlayerScores() {
     return new Game(Result._15_LOVE);
   }
+
+  public Game receivingPlayerScores() {
+    return new Game(Result.LOVE_15);
+  }
 }

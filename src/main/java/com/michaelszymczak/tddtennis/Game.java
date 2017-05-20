@@ -17,10 +17,10 @@ public class Game {
   }
 
   public Game servingPlayerScores() {
-    return new Game(Result._15_LOVE);
+    return new Game(result.afterServingScored());
   }
 
   public Game receivingPlayerScores() {
-    return new Game(Result.LOVE_15);
+    return new Game(result.afterReceivingScored());
   }
 }

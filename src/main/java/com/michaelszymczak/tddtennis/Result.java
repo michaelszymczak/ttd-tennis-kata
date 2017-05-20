@@ -3,9 +3,13 @@ package com.michaelszymczak.tddtennis;
 public enum Result {
 
   LOVE("love", "_15_LOVE", "LOVE_15"),
-  _15_LOVE("15-love", "_30_LOVE", ""),
-  _30_LOVE("30-love", "", ""),
-  LOVE_15("love-15", "", "");
+  _15_LOVE("15-love", "_30_LOVE", "_15_15"),
+  _30_LOVE("30-love", "_40_LOVE", "_30_15"),
+  _40_LOVE("40-love", "", ""),
+  _15_15("15-15", "", ""),
+  _30_15("30-15", "_40_15", ""),
+  _40_15("40-15", "", ""),
+  LOVE_15("love-15", "_15_15", "");
 
   private final String score;
   private String scoreIfServingPlayerScores;

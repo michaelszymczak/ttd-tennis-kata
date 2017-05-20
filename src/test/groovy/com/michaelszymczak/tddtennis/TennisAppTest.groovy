@@ -21,4 +21,14 @@ class TennisAppTest extends Specification {
     expect:
     startGame().servingPlayerScores().servingPlayerScores().result() == "30-love"
   }
+
+  def "should have appropriate number of points after scoring"() {
+    expect:
+    startGame().servingPlayerScores().servingPlayerScores().servingPlayerScores().result() == "40-love"
+    startGame().servingPlayerScores().servingPlayerScores().receivingPlayerScores().result() == "30-15"
+    startGame().servingPlayerScores().servingPlayerScores().receivingPlayerScores().servingPlayerScores().result() == "40-15"
+    startGame().servingPlayerScores().receivingPlayerScores().result() == "15-15"
+    startGame().receivingPlayerScores().servingPlayerScores().result() == "15-15"
+
+  }
 }

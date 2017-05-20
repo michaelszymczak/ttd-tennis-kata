@@ -18,10 +18,10 @@ public enum Result {
   LOVE_40("love-40", "_15_40", "RECEIVING_PLAYER_VICTORY"),
   _15_40("15-40", "_30_40", "RECEIVING_PLAYER_VICTORY"),
   DEUCE("deuce", "ADVANTAGE_SERVING_PLAYER", "ADVANTAGE_RECEIVING_PLAYER"),
-  SERVING_PLAYER_VICTORY("Serving player victory", "T", "U"),
-  RECEIVING_PLAYER_VICTORY("Receiving player victory", "W", "X"),
-  ADVANTAGE_SERVING_PLAYER("Advantage for serving player", "-1", "DEUCE"),
-  ADVANTAGE_RECEIVING_PLAYER("Advantage for receiving player", "DEUCE", "-4");
+  SERVING_PLAYER_VICTORY("Serving player victory", "SERVING_PLAYER_VICTORY", "SERVING_PLAYER_VICTORY"),
+  RECEIVING_PLAYER_VICTORY("Receiving player victory", "RECEIVING_PLAYER_VICTORY", "RECEIVING_PLAYER_VICTORY"),
+  ADVANTAGE_SERVING_PLAYER("Advantage for serving player", "SERVING_PLAYER_VICTORY", "DEUCE"),
+  ADVANTAGE_RECEIVING_PLAYER("Advantage for receiving player", "DEUCE", "RECEIVING_PLAYER_VICTORY");
 
   private final String score;
   private String scoreIfServingPlayerScores;

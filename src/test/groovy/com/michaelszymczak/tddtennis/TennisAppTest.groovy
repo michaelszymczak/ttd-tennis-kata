@@ -95,4 +95,27 @@ class TennisAppTest extends Specification {
     "SSSRRR" + "R" + "S" + "R" | "Advantage for receiving player"
     "SSSRRR" + "S" + "R" + "S" | "Advantage for serving player"
   }
+
+  def "should win after advantage"() {
+    expect:
+    resultAfter(sequence) == expectedResult
+
+    where:
+    sequence             | expectedResult
+    "SSSRRR" + "R" + "R" | "Receiving player victory"
+    "SSSRRR" + "S" + "S" | "Serving player victory"
+  }
+
+
+  def "should do nothing after a victory"() {
+    expect:
+    resultAfter(sequence) == expectedResult
+
+    where:
+    sequence     | expectedResult
+    "RRRR" + "R" | "Receiving player victory"
+    "RRRR" + "S" | "Receiving player victory"
+    "SSSS" + "S" | "Serving player victory"
+    "SSSS" + "R" | "Serving player victory"
+  }
 }

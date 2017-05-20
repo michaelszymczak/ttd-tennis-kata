@@ -43,5 +43,56 @@ class TennisAppTest extends Specification {
     "RRR"    | "love-40"
     "RRRS"   | "15-40"
     "RRRSS"  | "30-40"
+    "RRSR"   | "15-40"
+    "RRSS"   | "30-30"
+    "RRSSS"  | "40-30"
+  }
+
+  def "should be a deuce if both players have 40 points"() {
+    expect:
+    resultAfter(sequence) == "deuce"
+
+    where:
+    sequence << [
+            "SSSRRR",
+            "RRRSSS"
+    ]
+  }
+
+
+  def "should win if scored 4 times"() {
+    expect:
+    resultAfter(winningSequence) == expectedResult
+
+    where:
+    winningSequence | expectedResult
+    "SSSS"          | "Serving player victory"
+    "RSSSS"         | "Serving player victory"
+    "RRSSSS"        | "Serving player victory"
+    "RRRR"          | "Receiving player victory"
+    "SRRRR"         | "Receiving player victory"
+    "SSRRRR"        | "Receiving player victory"
+  }
+
+  def "should be an advantage if one score after deuce"() {
+    expect:
+    resultAfter(sequence) == expectedResult
+
+    where:
+    sequence       | expectedResult
+    "SSSRRR" + "S" | "Advantage for serving player"
+    "SSSRRR" + "R" | "Advantage for receiving player"
+  }
+
+  def "should be deuce if equalised after advantage"() {
+    expect:
+    resultAfter(sequence) == expectedResult
+
+    where:
+    sequence                   | expectedResult
+    "SSSRRR" + "S" + "R"       | "deuce"
+    "SSSRRR" + "R" + "S"       | "deuce"
+    "SSSRRR" + "R" + "S" + "R" | "Advantage for receiving player"
+    "SSSRRR" + "S" + "R" + "S" | "Advantage for serving player"
   }
 }
